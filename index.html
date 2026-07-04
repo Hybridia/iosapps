@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybridia — App Privacy &amp; Support</title>
+<meta name="description" content="Privacy policies and support for all Hybridia iOS apps. No accounts, no analytics, no ads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ── Hybridia hub — bright & playful ─────────────────────
+   Fredoka (display) · Nunito (body) · Space Mono (labels) */
+:root {
+  --paper: #FFFCF5;
+  --ink: #241A3D;
+  --muted: #6E6584;
+  --coral: #FF5D73;
+  --sunshine: #FFC145;
+  --mint: #2EC4B6;
+  --violet: #7C5CFF;
+  --sky: #4CC9F0;
+  --line: #EFE7DB;
+  --radius: 22px;
+  --max: 1080px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Nunito", system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+a { color: var(--violet); text-decoration: none; }
+a:focus-visible, .card:focus-visible, .btn:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--ink); color: #fff; padding: 8px 14px; z-index: 20;
+  border-radius: 0 0 10px 0;
+}
+.skip:focus { left: 0; top: 0; }
+
+/* ── Drifting blobs ───────────────────────── */
+.blobs {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.blob {
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 41% 59% 55% 45% / 48% 42% 58% 52%;
+  filter: blur(70px);
+  opacity: .5;
+}
+.blob-1 { background: var(--coral);    top: -140px; left: -100px; }
+.blob-2 { background: var(--sunshine); top: -60px;  right: -140px; }
+.blob-3 { background: var(--mint);     top: 300px;  left: 32%; width: 340px; height: 340px; opacity: .35; }
+.blob-4 { background: var(--violet);   top: 180px;  right: 18%; width: 300px; height: 300px; opacity: .3; }
+
+/* ── Masthead ─────────────────────────────── */
+.masthead {
+  position: relative; z-index: 2;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 26px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--ink);
+}
+.brand-mark {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 27%;
+  background: linear-gradient(140deg, var(--coral), var(--violet));
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0 6px 16px -6px rgb(124 92 255 / .5);
+}
+.wordmark {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: -0.01em;
+}
+.btn {
+  display: inline-block;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-weight: 800;
+  font-size: 15px;
+  transition: transform .18s cubic-bezier(.34,1.56,.64,1), background .18s ease;
+}
+.btn:hover { background: var(--violet); transform: scale(1.06) rotate(-1.5deg); }
+
+/* ── Hero ─────────────────────────────────── */
+.hero-wrap { position: relative; }
+.page {
+  position: relative; z-index: 1;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 16px 24px 80px;
+}
+.hero { padding: 44px 0 40px; text-align: left; }
+.hero h1 {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  font-size: clamp(42px, 7.2vw, 78px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin: 0 0 22px;
+  max-width: 14ch;
+}
+.hero h1 .w {
+  display: inline-block;
+  white-space: pre;
+}
+.squiggle-wrap { position: relative; display: inline-block; white-space: nowrap; }
+.squiggle {
+  position: absolute;
+  left: 0; right: 0; bottom: -0.18em;
+  width: 100%; height: 0.32em;
+  overflow: visible;
+}
+.squiggle path {
+  fill: none;
+  stroke: var(--coral);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.lede {
+  max-width: 46ch;
+  font-size: 19px;
+  color: var(--muted);
+  margin: 0 0 30px;
+}
+.lede strong { color: var(--ink); }
+
+.ledger {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+}
+.ledger span {
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 7px 15px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.ledger span b { font-weight: 700; }
+.ledger .n1 b { color: var(--violet); }
+.ledger .n2 b { color: var(--coral); }
+.ledger .n3 b { color: var(--mint); }
+.ledger .n4 b { color: #D99000; }
+
+/* ── App grid ─────────────────────────────── */
+.shelf-label {
+  display: flex; align-items: center; gap: 14px;
+  margin: 26px 0 20px;
+  color: var(--muted);
+}
+.shelf-label::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--line), transparent);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(255px, 100%), 1fr));
+  gap: 18px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  color: var(--ink);
+  transition:
+    transform .22s cubic-bezier(.34,1.56,.64,1),
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+.card:hover, .card:focus-visible {
+  transform: translateY(-6px) rotate(-.6deg);
+  border-color: hsl(var(--hue) 75% 62%);
+  box-shadow: 0 18px 34px -18px hsl(var(--hue) 70% 45% / .55);
+}
+.card h2 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.card:hover h2 { color: hsl(var(--hue) 72% 42%); }
+.card p { margin: 0; font-size: 15px; color: var(--muted); }
+.card-body { flex: 1; }
+.card-link {
+  color: hsl(var(--hue) 72% 42%);
+  font-weight: 700;
+}
+.card-link .arrow { display: inline-block; transition: transform .22s cubic-bezier(.34,1.56,.64,1); }
+.card:hover .card-link .arrow { transform: translateX(5px); }
+
+/* App tile: vivid squircle, iOS jiggle on hover */
+.tile {
+  flex: 0 0 auto;
+  width: 58px; height: 58px;
+  display: grid; place-items: center;
+  border-radius: 27%;
+  font-size: 27px;
+  line-height: 1;
+  background: linear-gradient(145deg,
+    hsl(var(--hue) 88% 66%),
+    hsl(calc(var(--hue) - 28) 82% 52%));
+  box-shadow:
+    inset 0 2px 3px rgb(255 255 255 / .45),
+    0 8px 18px -8px hsl(var(--hue) 75% 45% / .7);
+}
+
+/* ── Footer ───────────────────────────────── */
+.foot {
+  position: relative; z-index: 1;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px 24px 54px;
+  border-top: 2px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.foot a { color: var(--ink); font-weight: 700; }
+.foot a:hover { color: var(--coral); }
+
+/* ── Motion (only when the visitor is OK with it) ── */
+@media (prefers-reduced-motion: no-preference) {
+  .blob { animation: drift 26s ease-in-out infinite alternate; }
+  .blob-2 { animation-duration: 31s; animation-delay: -8s; }
+  .blob-3 { animation-duration: 23s; animation-delay: -14s; }
+  .blob-4 { animation-duration: 35s; animation-delay: -4s; }
+  @keyframes drift {
+    0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+    50%  { transform: translate(60px, 40px) rotate(25deg) scale(1.12); }
+    100% { transform: translate(-50px, 70px) rotate(-18deg) scale(.95); }
+  }
+
+  /* Hero words spring in one by one */
+  .hero h1 .w {
+    opacity: 0;
+    animation: springUp .7s cubic-bezier(.34,1.56,.64,1) forwards;
+    animation-delay: calc(var(--i) * 90ms);
+  }
+  @keyframes springUp {
+    from { opacity: 0; transform: translateY(34px) scale(.85) rotate(2deg); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .lede, .ledger {
+    opacity: 0;
+    animation: fadeUp .6s ease forwards;
+  }
+  .lede   { animation-delay: .65s; }
+  .ledger { animation-delay: .8s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Squiggle draws itself after the words land */
+  .squiggle path {
+    stroke-dasharray: 320;
+    stroke-dashoffset: 320;
+    animation: draw .8s ease-out .9s forwards;
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  /* Cards pop in as they enter the viewport (JS adds .in) */
+  .js .card {
+    opacity: 0;
+    transform: translateY(30px) scale(.92);
+  }
+  .js .card.in {
+    animation: pop .6s cubic-bezier(.34,1.56,.64,1) forwards;
+    animation-delay: calc(var(--d) * 70ms);
+  }
+  @keyframes pop {
+    0%   { opacity: 0; transform: translateY(30px) scale(.92); }
+    70%  { opacity: 1; transform: translateY(-4px) scale(1.015); }
+    100% { opacity: 1; transform: none; }
+  }
+
+  /* Signature: iOS home-screen jiggle on hover */
+  .card:hover .tile, .card:focus-visible .tile {
+    animation: jiggle .3s ease-in-out infinite;
+    transform-origin: 50% 55%;
+  }
+  @keyframes jiggle {
+    0%   { transform: rotate(-2.4deg); }
+    50%  { transform: rotate(2.4deg); }
+    100% { transform: rotate(-2.4deg); }
+  }
+
+  .brand-mark { animation: heyBounce 1s cubic-bezier(.34,1.56,.64,1) .2s both; }
+  @keyframes heyBounce {
+    from { transform: scale(0) rotate(-30deg); }
+    to   { transform: scale(1) rotate(0deg); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 560px) {
+  .hero { padding-top: 26px; }
+  .masthead { padding: 20px 20px 8px; }
+  .page { padding: 10px 20px 60px; }
+  .blob { width: 280px; height: 280px; filter: blur(55px); }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<div class="hero-wrap">
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <header class="masthead">
+    <span class="brand">
+      <span class="brand-mark" aria-hidden="true">H</span>
+      <span class="wordmark">Hybridia</span>
+    </span>
+    <a class="btn" href="mailto:tha_ultima@hotmail.com">Contact</a>
+  </header>
+
+  <main id="content" class="page">
+    <section class="hero">
+      <h1>
+        <span class="w" style="--i:0">Apps </span><span class="w" style="--i:1">that </span><span class="w" style="--i:2">mind </span><span class="w" style="--i:3">their </span><span class="w" style="--i:4">own </span><span class="w squiggle-wrap" style="--i:5">business.<svg class="squiggle" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 Q 30 2, 56 13 T 108 13 T 160 13 T 212 13 T 264 13 T 296 12"/></svg></span>
+      </h1>
+      <p class="lede"><strong>Hybridia</strong> builds small, friendly iOS utilities. Everything stays on your device — pick an app below for its privacy policy and support.</p>
+      <p class="ledger">
+        <span class="n1"><b>12</b> APPS</span>
+        <span class="n2"><b>0</b> TRACKERS</span>
+        <span class="n3"><b>0</b> ACCOUNTS</span>
+        <span class="n4"><b>0</b> ADS</span>
+      </p>
+    </section>
+
+    <p class="shelf-label mono">THE APPS</p>
+    <section class="grid" aria-label="Apps">
+      <a class="card" href="coverlog/" style="--hue:214; --d:0">
+        <div class="tile" aria-hidden="true">🧾</div>
+        <div class="card-body">
+          <h2>Coverlog</h2>
+          <p>Warranty &amp; receipt tracker — 100% on your device</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="mivaulty/" style="--hue:262; --d:1">
+        <div class="tile" aria-hidden="true">🔐</div>
+        <div class="card-body">
+          <h2>MiVaulty</h2>
+          <p>Encrypted private vault for notes &amp; photos</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="comix-reader/" style="--hue:221; --d:2">
+        <div class="tile" aria-hidden="true">📚</div>
+        <div class="card-body">
+          <h2>Comix Reader</h2>
+          <p>A viewer for comics you already own</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="remindy/" style="--hue:174; --d:3">
+        <div class="tile" aria-hidden="true">✅</div>
+        <div class="card-body">
+          <h2>Remindy</h2>
+          <p>Smart task management for iPhone</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="mediplanner/" style="--hue:203; --d:4">
+        <div class="tile" aria-hidden="true">💊</div>
+        <div class="card-body">
+          <h2>MediPlanner</h2>
+          <p>Medication schedule &amp; reminders — Free and Pro</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="lessenrooster/" style="--hue:288; --d:5">
+        <div class="tile" aria-hidden="true">🎒</div>
+        <div class="card-body">
+          <h2>Lessenrooster</h2>
+          <p>Your personal school timetable</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="garbage-pickup-calendar/" style="--hue:142; --d:6">
+        <div class="tile" aria-hidden="true">🗑️</div>
+        <div class="card-body">
+          <h2>Garbage Pickup Calendar</h2>
+          <p>Waste collection reminders</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="taprush/" style="--hue:12; --d:7">
+        <div class="tile" aria-hidden="true">⚡</div>
+        <div class="card-body">
+          <h2>TapRush</h2>
+          <p>Reaction &amp; memory challenge</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="morse-beacon/" style="--hue:0; --d:8">
+        <div class="tile" aria-hidden="true">📡</div>
+        <div class="card-body">
+          <h2>Morse Beacon</h2>
+          <p>Morse code signalling &amp; practice</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="wifizer/" style="--hue:24; --d:9">
+        <div class="tile" aria-hidden="true">📶</div>
+        <div class="card-body">
+          <h2>WiFizer</h2>
+          <p>Wi-Fi network tools</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="splitxpense/" style="--hue:44; --d:10">
+        <div class="tile" aria-hidden="true">💸</div>
+        <div class="card-body">
+          <h2>SplitXpense</h2>
+          <p>Split expenses with friends</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="altkey-codes/" style="--hue:30; --d:11">
+        <div class="tile" aria-hidden="true">⌨️</div>
+        <div class="card-body">
+          <h2>AltKey Codes</h2>
+          <p>Symbol &amp; alt-code reference</p>
+        </div>
+        <span class="mono card-link">PRIVACY &amp; SUPPORT <span class="arrow">→</span></span>
+      </a>
+    </section>
+  </main>
+</div>
+
+<footer class="foot">
+  <span class="mono">© 2026 HYBRIDIA · <a href="mailto:tha_ultima@hotmail.com">tha_ultima@hotmail.com</a></span>
+  <span class="mono">MADE WITH CARE · NO COOKIES</span>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var cards = document.querySelectorAll('.card');
+  if (!('IntersectionObserver' in window)) {
+    cards.forEach(function (c) { c.classList.add('in'); });
+    return;
+  }
+  var batch = 0;
+  var io = new IntersectionObserver(function (entries) {
+    var i = 0;
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.style.setProperty('--d', i++);
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+  cards.forEach(function (c) { io.observe(c); });
+})();
+</script>
+</body>
+</html>

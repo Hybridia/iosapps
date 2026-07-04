@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiVaulty — Privacy &amp; Support · Hybridia</title>
+<meta name="description" content="Privacy policy and support for MiVaulty by Hybridia.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="masthead">
+  <a class="wordmark" href="../">Hybridia</a>
+  <span class="mono crumb">APPS / MIVAULTY</span>
+</header>
+<main id="content" class="page">
+  <header class="app-head">
+    <div class="tile" style="--hue:262" aria-hidden="true">Mi</div>
+    <div>
+      <h1>MiVaulty</h1>
+      <p class="tagline">Encrypted private vault for notes & photos</p>
+      <p class="mono effective">EFFECTIVE — APRIL 7, 2026</p>
+    </div>
+  </header>
+  <article class="policy">
+<p>Effective: April 7, 2026</p>
+<h2>The Short Version</h2>
+<p>
+        MiVaulty collects <strong>no data</strong>.
+        We have <strong>no servers</strong>.
+        We have <strong>no analytics</strong>.
+        Your notes never leave your device — period.
+      </p>
+<h2>What We Don't Collect</h2>
+<p>MiVaulty is designed from the ground up to know nothing about you. The app has zero network entitlements — it is technically incapable of transmitting data.</p>
+<ul><li><strong>No Personal Data</strong> — No name, email, or account</li><li><strong>No Network Access</strong> — Zero outbound connections</li><li><strong>No Analytics</strong> — No tracking, no telemetry</li><li><strong>No Cloud Sync</strong> — Nothing leaves your iPhone</li></ul>
+<ul class="pills"><li>No Accounts</li><li>No Ads</li><li>No Third-Party SDKs</li><li>No Cookies</li><li>No Crash Reporting</li><li>No Firebase</li><li>No Facebook SDK</li></ul>
+<h2>Data Storage</h2>
+<p>All your notes, images, tags, and settings are stored locally on your device using Apple's SwiftData framework. Every note is encrypted with AES-256-GCM before it touches the filesystem.</p>
+<ul>
+<li>Encryption keys are stored in the iOS Keychain, protected by the Secure Enclave</li>
+<li>Notes are excluded from iCloud backup by default</li>
+<li>Decrypted content exists only in memory while you're actively viewing it</li>
+<li>When the app goes to the background, all plaintext is wiped from memory</li>
+</ul>
+<h2>Biometric Authentication</h2>
+<p>MiVaulty uses Face ID or Touch ID to unlock your vault. Biometric data is handled entirely by Apple's LocalAuthentication framework — MiVaulty never accesses, processes, or stores your biometric data. We only receive a success or failure result from the operating system.</p>
+<h2>Photo Library Access</h2>
+<p>If you choose to add images to your vault, MiVaulty requests access to your Photo Library via Apple's PhotosUI picker. Selected images are immediately encrypted and stored locally. MiVaulty does not browse, index, or access any photos you don't explicitly select.</p>
+<h2>Export & Sharing</h2>
+<p>When you export or share a note, MiVaulty creates an encrypted <code>.vaultnote</code> file protected with a passphrase you set. The file is handed to the iOS share sheet — you control where it goes. MiVaulty has no knowledge of the destination.</p>
+<h2>Third-Party Services</h2>
+<p>MiVaulty uses zero third-party libraries, SDKs, or services. The entire app is built with Apple's native frameworks only. There are no analytics providers, ad networks, crash reporters, or external dependencies of any kind.</p>
+<h2>Children's Privacy</h2>
+<p>MiVaulty does not collect any data from anyone, including children. Since no data is collected or transmitted, no special provisions are necessary under COPPA or similar regulations.</p>
+<h2>Changes to This Policy</h2>
+<p>If this privacy policy is updated, the revised version will be posted on this page with an updated effective date. Since MiVaulty collects no data, meaningful changes are unlikely.</p>
+<h2>Contact</h2>
+<p>If you have questions about this privacy policy or MiVaulty, you can reach us at:</p>
+  </article>
+      <section class="support">
+        <h2>Support</h2>
+        <p>Questions, bug reports, or feature requests — email us and we'll get back to you.</p>
+        <p><a class="btn" href="mailto:tha_ultima@hotmail.com?subject=MiVaulty%20Support">Email support</a></p>
+      </section>
+</main>
+<footer class="foot">
+  <a href="../">← All apps</a>
+  <span class="mono">© 2026 HYBRIDIA · <a href="mailto:tha_ultima@hotmail.com">tha_ultima@hotmail.com</a></span>
+</footer>
+</body>
+</html>
